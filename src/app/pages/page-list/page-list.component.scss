@@ -1,0 +1,23 @@
+.searchClinic {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  gap: 10px;
+}
+
+.searchClinic input {
+  max-width: 250px;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  gap: 15px;
+}

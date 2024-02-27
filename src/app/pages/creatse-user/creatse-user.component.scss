@@ -1,0 +1,16 @@
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+label {
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.validation-error > p {
+  color: #dc3545;
+  border-left: 3px solid #dc3545;
+  padding-left: 5px;
+  margin-top: 10px;
+}

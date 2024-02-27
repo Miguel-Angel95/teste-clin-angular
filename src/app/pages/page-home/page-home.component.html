@@ -1,0 +1,68 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">Login</div>
+        <div class="card-body">
+          <form [formGroup]="form" (ngSubmit)="login()" #formDir="ngForm">
+            <div class="form-group">
+              <label for="cpf">CPF:</label>
+              <input
+                mask="000.000.000-00"
+                type="text"
+                id="cpf"
+                class="form-control"
+                formControlName="identifier"
+                name="cpf"
+                required
+              />
+              <div
+                *ngIf="identifier.invalid && formDir.submitted"
+                class="validation-error"
+              >
+                <p *ngIf="identifier.errors?.['required']">
+                  O CPF é obrigatorio
+                </p>
+                <p
+                  *ngIf="identifier.errors?.['minlength'] || identifier.errors?.['maxlength']"
+                >
+                  CPF inválido, deve conter exatamente 11 dígitos.
+                </p>
+              </div>
+            </div>
+            <div class="form-group mt-2">
+              <label for="password">Senha:</label>
+              <input
+                type="password"
+                id="password"
+                class="form-control"
+                formControlName="password"
+                name="password"
+                required
+              />
+              <div
+                *ngIf="password.invalid && formDir.submitted"
+                class="validation-error"
+              >
+                <p *ngIf="password.errors?.['required']">
+                  A senha é obrigatória
+                </p>
+              </div>
+            </div>
+            <div class="buttons">
+              <button type="submit" class="btn btn-primary mt-3">Entrar</button>
+              <button
+                type="button"
+                class="btn btn-primary mt-2"
+                (click)="register()"
+              >
+                Cadastro
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="card-register"></div>
+    </div>
+  </div>
+</div>

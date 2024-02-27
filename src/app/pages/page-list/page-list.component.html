@@ -1,0 +1,50 @@
+<div class="container mt-4">
+  <div class="container text-center mb-3">
+    <button (click)="redirectNewClinc()" class="btn btn-primary mt-3 col-md-4">
+      Criar nova clínica
+    </button>
+  </div>
+
+  <div class="searchClinic">
+    <input
+      type="text"
+      placeholder="Digite o nome da clínica"
+      [(ngModel)]="searchTerm"
+    />
+    <button class="btn btn-primary" (click)="searchClinic()">Pesquisar</button>
+  </div>
+
+  <div class="row" style="justify-content: center">
+    <default-card
+      *ngFor="let clinic of clinics"
+      class="m-2"
+      [title]="clinic.nomeClinica"
+      subtitle="Responsável: {{ clinic.nomeResponsavel }}"
+      [info]="clinic | clincInfo"
+      leftButtonLabel="Remover"
+      (onClickLeftButton)="deleteClinic(clinic?.id)"
+      rightButtonLabel="Editar clínica"
+      (onClickRightButton)="editedClinic(clinic?.id)"
+    ></default-card>
+  </div>
+
+  <div class="pagination mt-3">
+    <button
+      class="btn btn-primary mr-2"
+      [disabled]="currentPage === 1"
+      (click)="previousPage()"
+    >
+      Anterior
+    </button>
+    <div class="text-center mt-3">
+      <p>Página: {{ currentPage }}</p>
+    </div>
+    <button
+      class="btn btn-primary"
+      [disabled]="currentPage === totalPages"
+      (click)="nextPage()"
+    >
+      Próxima
+    </button>
+  </div>
+</div>

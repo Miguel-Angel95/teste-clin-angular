@@ -1,0 +1,131 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">Cadastro</div>
+        <div class="card-body">
+          <form
+            [formGroup]="userForm"
+            (ngSubmit)="createUser()"
+            #formDir="ngForm"
+          >
+            <div class="form-group">
+              <label for="name">Nome:</label>
+              <input
+                type="text"
+                id="name"
+                class="form-control"
+                formControlName="name"
+                required
+              />
+              <div
+                *ngIf="name.invalid && formDir.submitted"
+                class="validation-error"
+              >
+                <p *ngIf="name.errors?.['required']">O nome é obrigatorio</p>
+                <p *ngIf="name.errors?.['minlength']">
+                  O nome da clínica deve ter no mínimo 4 caracteres!
+                </p>
+              </div>
+            </div>
+
+            <div class="form-group mt-2">
+              <label for="Email">Email:</label>
+              <input
+                type="text"
+                id="email"
+                class="form-control"
+                formControlName="email"
+                required
+              />
+              <div
+                *ngIf="email.invalid && formDir.submitted"
+                class="validation-error"
+              >
+                <p *ngIf="email.errors?.['required']">O email é obrigatório!</p>
+                <p *ngIf="email.errors?.['pattern']">
+                  O email é inválido, deve conter "@mail.com"!
+                </p>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="cpf">CPF:</label>
+              <input
+                mask="000.000.000-00"
+                type="text"
+                id="cpf"
+                class="form-control"
+                formControlName="cpf"
+                required
+              />
+              <div
+                *ngIf="cpf.invalid && formDir.submitted"
+                class="validation-error"
+              >
+                <p *ngIf="cpf.errors?.['required']">O CPF é obrigatorio</p>
+                <p
+                  *ngIf="cpf.errors?.['minlength'] || cpf.errors?.['maxlength']"
+                >
+                  CPF inválido, deve conter exatamente 11 dígitos.
+                </p>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="phoneNumber">Telefone:</label>
+              <input
+                mask="(00) 0000-0000||(00) 0 0000-0000"
+                type="text"
+                id="phoneNumber"
+                class="form-control"
+                formControlName="phoneNumber"
+                required
+              />
+              <div
+                *ngIf="phoneNumber.invalid && formDir.submitted"
+                class="validation-error"
+              >
+                <p *ngIf="phoneNumber.errors?.['required']">
+                  O telefone é obrigatório!
+                </p>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="password">Senha:</label>
+              <input
+                type="password"
+                id="password"
+                class="form-control"
+                formControlName="password"
+                required
+              />
+              <div
+                *ngIf="password.invalid && formDir.submitted"
+                class="validation-error"
+              >
+                <p *ngIf="password.errors?.['required']">
+                  A senha é obrigatório!
+                </p>
+              </div>
+            </div>
+
+            <div class="buttons">
+              <button type="submit" class="btn btn-primary mt-3">
+                Confirmar
+              </button>
+              <button
+                type="button"
+                class="btn btn-primary mt-3"
+                (click)="redirectLogin()"
+              >
+                Voltar
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

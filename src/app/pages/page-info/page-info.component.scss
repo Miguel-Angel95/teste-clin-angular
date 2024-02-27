@@ -1,0 +1,20 @@
+.divider {
+  border-bottom: 1px solid #c0c0c0;
+}
+
+label {
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+
+.validation-error > p {
+  color: #dc3545;
+  border-left: 3px solid #dc3545;
+  padding-left: 5px;
+  margin-top: 10px;
+}
+
+#teste {
+  display: flex;
+  gap: 20px;
+}
